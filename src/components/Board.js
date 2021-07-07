@@ -23,7 +23,7 @@ class Board extends Component {
     };
 
     // TODO: Bind your class methods here
-    // ...
+
     this.handleAddList = this.handleAddList.bind(this);
     this.handleRemoveList = this.handleRemoveList.bind(this);
     this.handleAddCard = this.handleAddCard.bind(this);
@@ -44,8 +44,10 @@ class Board extends Component {
   // Tips:
   // - Use the `this.setState` method to update the component state
   componentDidMount() {
-    this.setState(prevState => {
-
+    this.setState = ({
+      lists: data.lists,
+      cards: data.cards,
+      listOrder: data.listOrder
     })
   }
 
@@ -56,14 +58,30 @@ class Board extends Component {
   // - Add the new list
   // - Use the `this.setState` method to update the state (lists, listOrder, newListText, creatingNewList)
   // - Reset the `newListText` and `creatingNewList` state values as well to cleanup and close the form
-  handleAddList(title = '') {}
+  handleAddList(title = '') {
+    const id = _generateId();
+    const newList = { id, title, cardIds: [] };
+    this.setState({
+      lists: data.lists,
+      listOrder: data.listOrder,
+      newListText: data.newListText,
+      creatingNewList: data.creatingNewList
+    });
+    const newListState = {
+      ...this.state.lists,
+      id: newList
+    };
+    const newListOrder = [...this.state.listOrder, id]
+    this.setState({ lists: newListState, listOrder: newListOrder, newListText: '', creatingNewList: false });
+  };
+
 
   // TODO: implement the handleRemoveList method to remove a list from the board.
   // Tips:
   // - Delete all cards from the list
   // - Delete list itself
   // - Use the `this.setState` method to update the state (lists, cards, listOrder)
-  handleRemoveList(listId) {}
+  handleRemoveList(listId) {};
 
   // TODO: implement the handleAddCard method to add a card to a list.
   // Tips:
