@@ -12,7 +12,6 @@ import data from '../data';
 class Board extends Component {
   constructor(props) {
     super(props);
-
     // Board state
     this.state = {
       lists: {},
@@ -25,12 +24,30 @@ class Board extends Component {
 
     // TODO: Bind your class methods here
     // ...
+    this.handleAddList = this.handleAddList.bind(this);
+    this.handleRemoveList = this.handleRemoveList.bind(this);
+    this.handleAddCard = this.handleAddCard.bind(this);
+    this.handleRemoveCard = this.handleRemoveCard.bind(this);
+    this.handleRemoveAllCards = this.handleRemoveAllCards.bind(this);
+    this.handleCopyCard = this.handleCopyCard.bind(this);
+    this.handleCopyList = this.handleCopyList.bind(this);
+    this.handleCopyList = this.handleCopyList.bind(this);
+    this.handleMoveAllCards = this.handleMoveAllCards.bind(this);
+    this.handleToggleMenu = this.handleToggleMenu.bind(this);
+    this.handleEditCard = this.handleEditCard.bind(this);
+    this.handleRemoveTag = this.handleRemoveTag.bind(this);
+    this.handleAddTag = this.handleAddTag.bind(this);
+    this.handleDragEnd = this.handleDragEnd.bind(this);
   }
 
   // TODO: implement the componentDidMount lifecycle method to fetch data and init the component state.
   // Tips:
   // - Use the `this.setState` method to update the component state
-  componentDidMount() {}
+  componentDidMount() {
+    this.setState(prevState => {
+
+    })
+  }
 
   // TODO: implement the handleAddList method to add a new list to the board.
   // Tips:
