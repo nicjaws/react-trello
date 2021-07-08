@@ -59,22 +59,24 @@ class Board extends Component {
   // - Use the `this.setState` method to update the state (lists, listOrder, newListText, creatingNewList)
   // - Reset the `newListText` and `creatingNewList` state values as well to cleanup and close the form
   handleAddList(title = '') {
-    const id = _generateId();
-    const newList = { id, title, cardIds: [] };
-    this.setState({
-      lists: data.lists,
-      listOrder: data.listOrder,
-      newListText: data.newListText,
-      creatingNewList: data.creatingNewList
-    });
-    const newListState = {
-      ...this.state.lists,
-      id: newList
-    };
-    const newListOrder = [...this.state.listOrder, id]
-    this.setState({ lists: newListState, listOrder: newListOrder, newListText: '', creatingNewList: false });
-  };
+    if (title.trim()) {
+      const id = _generateId();
+      const newList = { id, title, cardIds: [] };
 
+      const newListsState = {
+        ...this.state.lists,
+        id: newList
+      };
+
+      const newListOrder = [...this.state.listOrder, id];
+
+      this.setState({ lists: newListsState, listOrder: newListOrder, newListText: '', creatingNewList: false });
+    }
+    // Otherwise, don't create the list and reset the board's state
+    else {
+      this.setState({ newListText: '', creatingNewList: false });
+    }
+  };
 
   // TODO: implement the handleRemoveList method to remove a list from the board.
   // Tips:
